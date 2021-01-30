@@ -1,5 +1,4 @@
 //declaring the variables
-
 const FirstClassPlusBtn = document.getElementById("firstClassPlusBtn");
 const FirstClassMinusBtn = document.getElementById("firstClassMinusBtn");
 const economyClassPlusBtn = document.getElementById("economyClassPlusBtn");
@@ -8,12 +7,13 @@ const bookNowBtn = document.getElementById("bookNowBtn");
 const backBtn = document.getElementById("backBtn");
 const formItems = document.getElementById("formItems");
 const confirmation = document.getElementById("confirmation");
-//First Class Add Btn Event Listener
 
+//First Class Ticket Increase Btn Event Handler
 firstClassPlusBtn.addEventListener('click', function(){
     addItems("firstClassQuantity", 1, 150);
 });
 
+//First Class Ticket Decrease Btn Event handler
 firstClassMinusBtn.addEventListener('click', function(){
     const inputMinValue = document.getElementById("firstClassQuantity").value;
     const inputMinValueNumber = parseInt(inputMinValue);
@@ -27,10 +27,12 @@ firstClassMinusBtn.addEventListener('click', function(){
     }
 });
 
+//Economy Class Ticket Increase Btn Event handler
 economyClassPlusBtn.addEventListener('click', function(){
     addItems("economyClassQuantity", 1, 100);
 });
 
+//Economy Class Ticket Decrease Btn Event handler
 economyClassMinusBtn.addEventListener('click', function(){
     const inputMinValue = document.getElementById("economyClassQuantity").value;
     const inputMinValueNumber = parseInt(inputMinValue);
@@ -44,9 +46,8 @@ economyClassMinusBtn.addEventListener('click', function(){
     }
 });
 
-
+//declaring Common function for each Ticket Type
 function addItems(id, increaseQuantity ,addToSubtotal){
-    //declaring Common function for each Ticket Type
     const itemQuantity = document.getElementById(id).value;
     const itemQuantityNumber = parseInt(itemQuantity);
     const newQuantity = itemQuantityNumber + increaseQuantity;
@@ -71,27 +72,26 @@ function addItems(id, increaseQuantity ,addToSubtotal){
 
 
 //extras
-
+// book now btn event handler
 bookNowBtn.addEventListener('click', function(){
     
     let totalFare = document.getElementById("grandTotal").innerText;
     
+    //checking whether the total fare is more than 0
     if(totalFare != 0){
         document.getElementById("totalFare").innerText = totalFare;
+        confirmation.style.display = "block";
+        formItems.style.display = "none";
     }else{
         alert('Please add at least one ticket');
     }
-
-    confirmation.style.display = "block";
-    formItems.style.display = "none";
+    
 });
 
-backBtn.addEventListener('click', function(){
-   
+//back btn event handler
+backBtn.addEventListener('click', function(){  
     confirmation.style.display = "none";
-    formItems.style.display = "block";
-   
-    
+    formItems.style.display = "block";  
 });
 
 
